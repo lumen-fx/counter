@@ -1,0 +1,9 @@
+<root bg="#0c1c30" padding="32" gap="20" align="center" justify="center">
+  <label class="display" id="counter" width="100%" height="120px" text="0"
+         bind-text="clicks" />
+  <row gap="14" justify="center">
+    <button class="primary" id="bump"  width="120px" height="48px" text="+1" />
+    <button class="primary" id="reset" width="120px" height="48px" text="reset" />
+  </row>
+  <script src="main.cdl" />
+</root>

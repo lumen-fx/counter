@@ -1,0 +1,23 @@
+import "lumen.cdl";
+
+// on_ready runs on the first tick, once the tree is mounted, so the elements
+// are there to look up. on_start runs before that, when nothing is queryable.
+fn on_ready() {
+    lumen::signal_set_int("clicks", 0);
+
+    get_by_id("bump").on("click", "on_bump");
+    get_by_id("reset").on("click", "on_reset");
+}
+
+// A handler is called with the event id. Wrap it with `event(ev)` to read the
+// event itself: `event(ev).target()`, `.shift()`, `.prevent_default()`.
+fn on_bump(ev: int) {
+    let n = lumen::signal_get_int("clicks");
+    lumen::signal_set_int("clicks", n + 1);
+}
+
+fn on_reset(ev: int) {
+    lumen::signal_set_int("clicks", 0);
+}
+
+fn main() {}
