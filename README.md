@@ -12,8 +12,9 @@ What it shows:
 - `on_ready` versus `on_start`. `on_start` runs at load, before the tree is
   mounted, so a lookup there finds nothing; `on_ready` runs on the first
   tick, once the elements exist. Bind events from `on_ready`.
-- Signals. `lumen::signal_set_int("clicks", n)` writes a named entry in the
-  reactive store and `lumen::signal_get_int("clicks")` reads it back.
+- Signals. `signal<int>("clicks")` is a handle on a named entry in the
+  reactive store; `set` writes it and `get` reads it back. The type argument
+  says what the cell holds, so `get()` hands back a number you can add to.
 - `bind-text="clicks"` on the label. The label re-renders whenever the
   signal changes, so nothing sets its text by hand.
 - CSS custom properties. Every color and radius lives in `:root`, so a
